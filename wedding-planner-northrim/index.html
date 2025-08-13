@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Wedding Planner — North Rim Photography</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
+  <link rel="stylesheet" href="./styles.css" />
+  <meta name="description" content="Checklist, vendor manager, and wedding budget tracker that updates in real time."/>
+</head>
+<body>
+  <header class="header">
+    <div class="container" style="display:flex;gap:12px;align-items:center;justify-content:space-between">
+      <div class="brand">
+        <div class="logo">NR</div>
+        <div>
+          <div style="font-weight:800">North Rim Photography</div>
+          <div class="small">Wedding Planner & Budget Tracker</div>
+        </div>
+      </div>
+      <nav style="display:flex;gap:8px;align-items:center">
+        <a class="small" href="./landing.html">Back</a>
+        <a class="small" href="https://northrimphotography.com" target="_blank" rel="noreferrer">Website</a>
+        <span class="small">•</span>
+        <a class="small" href="https://instagram.com/northrimphotography" target="_blank" rel="noreferrer">@northrimphotography</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" style="padding-bottom:96px">
+    <div id="app"></div>
+  </main>
+
+  <footer class="footer">
+    <div class="container small" style="display:flex;align-items:center;justify-content:space-between;padding:10px 20px">
+      <div>Data saves locally • Export for backup</div>
+      <div>© <span id="yr"></span> North Rim Photography</div>
+    </div>
+  </footer>
+
+  <!-- React from CDN for zero-build hosting -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script type="module" src="./config.js"></script>
+  <script type="module" src="./main.js"></script>
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

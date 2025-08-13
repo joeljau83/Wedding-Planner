@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>North Rim Photography — Wedding Planner</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
+  <link rel="stylesheet" href="./styles.css" />
+  <meta name="description" content="A simple, private wedding planning and budget tracker by North Rim Photography." />
+</head>
+<body>
+  <header class="header">
+    <div class="container" style="display:flex;align-items:center;gap:16px;justify-content:space-between">
+      <div class="brand">
+        <div class="logo">NR</div>
+        <div>
+          <div style="font-weight:800">North Rim Photography</div>
+          <div class="small">Wedding Planner & Budget Tracker</div>
+        </div>
+      </div>
+      <nav style="display:flex;gap:8px;align-items:center">
+        <a class="small" href="https://northrimphotography.com" target="_blank" rel="noreferrer">Website</a>
+        <span class="small">•</span>
+        <a class="small" href="https://instagram.com/northrimphotography" target="_blank" rel="noreferrer">@northrimphotography</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top:28px;padding-bottom:96px">
+    <div class="grid grid-2" style="align-items:center">
+      <div>
+        <div class="badge">Private • One-time purchase • Local-only</div>
+        <h1 style="font-size:2rem;line-height:1.1;margin:.5rem 0 0">Plan with clarity. Book vendors. Track your budget in real time.</h1>
+        <p class="small" style="margin:.5rem 0 1rem">Built for engaged couples. Venue & Photography are prioritized by default, and everything updates automatically as you add costs.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn" onclick="openGate()">Enter Access Code</button>
+          <a class="btn light" href="#how-it-works">How it works</a>
+        </div>
+        <p class="small" style="margin-top:10px">Don’t have access yet? <em>Contact us for a code.</em></p>
+      </div>
+      <div class="card">
+        <ul style="margin:0;padding-left:18px;line-height:1.6">
+          <li>Daily checklist with pinning, due dates, and notes</li>
+          <li>Vendor hub: contacts, quotes, deposits, status, due dates</li>
+          <li>Smart budget: editable % allocations per category</li>
+          <li>Export/Import your data for backup or device switch</li>
+          <li>All data stays in your browser</li>
+        </ul>
+      </div>
+    </div>
+
+    <section id="how-it-works" style="margin-top:28px">
+      <h2>How it works</h2>
+      <div class="grid grid-3">
+        <div class="card"><strong>1) Purchase</strong><br/><span class="small">Receive your unique access code.</span></div>
+        <div class="card"><strong>2) Unlock</strong><br/><span class="small">Enter the code to open the app on this device.</span></div>
+        <div class="card"><strong>3) Plan</strong><br/><span class="small">Everything auto-saves locally. Export anytime.</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container small" style="display:flex;align-items:center;justify-content:space-between;padding:10px 20px">
+      <div>© <span id="yr"></span> North Rim Photography — Built for engaged couples.</div>
+      <div><a href="#" onclick="alert('Add your Terms link here.');return false;">Terms</a> • <a href="#" onclick="alert('Add your Privacy link here.');return false;">Privacy</a></div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { ACCESS } from './config.js';
+    document.getElementById('yr').textContent = new Date().getFullYear();
+    window.openGate = function(){
+      if(!ACCESS.codeRequired){ window.location.href='./index.html'; return; }
+      const code = prompt('Enter your access code:');
+      if(code && code.trim() === ACCESS.code){
+        localStorage.setItem('nrp_weddingplanner_unlocked', '1');
+        window.location.href = './index.html';
+      }else{
+        alert('Invalid code. Please check and try again.');
+      }
+    };
+  </script>
+</body>
+</html>
